@@ -1,13 +1,26 @@
 const random = require('random-number-generator');
-const prompt = require('prompt');
-var randomnumber = random(3);
+const MAX = 5;
+const readlineSync = require('readline-sync');
 var keys = ['r', 'g', 'b', 'y'];
-var colors = keys[random(3)];
-console.log(colors);
-prompt.get(['input'], function(err, result) {
-    console.log('Command-line input received:');
-    console.log('input:' + result.input);
-    if(colors == result.input) {
-        console.log('You Won!');
+var targets = [];
+var playing = true;
+do {
+    targets.push(random(3));
+    console.log(targets);
+    for (var i = 0; i < targets.length; i++){
+        var guessNum = i + 1;
+        var guess = readlineSync.question('Guess #'+ guessNum +': ');
+        var target = targets[i];
+        if (guess == keys[target]) {
+            console.log('You\'re Right!');
+        } else {
+            console.log('You\'re Wrong!');
+            playing = false;
+        }
     }
-});
+
+    if (targets.length == MAX) {
+        playing = false;
+        console.log('Nice Job!');
+    }
+}while(playing);
