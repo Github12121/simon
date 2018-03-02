@@ -1,8 +1,8 @@
-# simon
-#introduction
+# Simon 
+Introduction
 A javascript game of Simon 
 Created in Webstorm.
-##gameplay
+Gameplay
 R for red
 G for green
 B for blue
