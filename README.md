@@ -1,9 +1,4 @@
 # Simon 
-Introduction
-A javascript game of Simon 
-Created in Webstorm.
-Gameplay
-R for red
-G for green
-B for blue
-Y for yellow
+Introducing a javascript game of Simon!</br>
+Experience the magic of Simon online!</br>
+The original game is made and sold by Hasbro.
