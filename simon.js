@@ -7,7 +7,11 @@ var keys = ['r', 'g', 'b', 'y'];
 var targets = [];
 var playing = true;
 
-figlet('Simon', function(err, data) {
+figlet('Simon',{
+    //isometric1
+    font: 'isometric1',
+    horizontalLayout: 'default',
+    verticalLayout: 'default'}, function(err, data) {
     console.log(chalk.blue.bgRed.bold(data));
     console.log('A fun electronic version of Simon!');
     do {
@@ -18,10 +22,10 @@ figlet('Simon', function(err, data) {
             var guess = readlineSync.question('Guess #' + guessNum + ': ');
             var target = targets[i];
             if (guess == keys[target]) {
-                console.log('You\'re Right!');
+                console.log(chalk.white.bgGreen.bold('You\'re Right!'));
             } else {
-                console.log('You\'re Wrong!');
-                console.log('Game Over!');
+                console.log(chalk.red.bold('You\'re Wrong!'));
+                console.log(chalk.white.bold('Game Over!'));
                 playing = false;
             }
         }
