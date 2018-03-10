@@ -17,8 +17,8 @@ figlet('Simon',{
     console.log(chalk.blue.bgRed.bold('How To Play'));
     console.log('The letter R = 0, G = 1, B = 2, Y = 3.' +
         'Remember, if you\'re dealing with a number such as 10331,' +
-        'type the first letter, then press enter and repeat these steps until' +
-        'you are finished with the number');
+        'type the first letter, then press enter and repeat these steps unt-il ' +
+        'you are finished with the number.');
     do {
         targets.push(random(3));
         console.log(targets);
