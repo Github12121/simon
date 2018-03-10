@@ -9,7 +9,7 @@ var playing = true;
 
 figlet('Simon',{
     //isometric1
-    font: 'usaflag',
+    font: 'ticks',
     horizontalLayout: 'default',
     verticalLayout: 'default'}, function(err, data) {
     console.log(chalk.blue.bgRed.bold(data));
