@@ -1,3 +1,5 @@
+const figlet = require('figlet');
+const chalk = require('chalk');
 figlet('Simon Help', {
     font: 'colossal',
     horizontalLayout: 'default',

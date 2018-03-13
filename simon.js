@@ -1,7 +1,7 @@
 const random = require('random-number-generator');
 const figlet = require('figlet');
 const chalk = require('chalk');
-const MAX = 7;
+const MAX = 5;
 const readlineSync = require('readline-sync');
 var keys = ['r', 'g', 'b', 'y'];
 var targets = [];
