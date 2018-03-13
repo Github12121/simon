@@ -9,4 +9,8 @@ figlet('Simon Help', {
     console.log('If you\'re dealing with a number such as 10110,');
     console.log('enter the first letter, then press the enter key and');
     console.log('repeat these steps.');
+    console.log('More of Simon Online');
+    console.log('Github repository is located at https://github.com/Github12121/simon');
+    console.log('Created on Webstorm');
+
 });
