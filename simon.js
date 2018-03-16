@@ -2,8 +2,11 @@ const random = require('random-number-generator');
 const figlet = require('figlet');
 const chalk = require('chalk');
 const MAX = 5;
+const ansi = require('ansi-escapes');
 const readlineSync = require('readline-sync');
 var keys = ['r', 'g', 'b', 'y'];
+var colors = [chalk.red.bgWhite('red'), chalk.green.bgWhite('green'), chalk.blue.bgWhite('blue'),
+    chalk.yellow.bgWhite('yellow')];
 var targets = [];
 var playing = true;
 
@@ -19,7 +22,15 @@ figlet('Simon',{
     console.log('Type node simonhelp.js to get help.');
     do {
         targets.push(random(3));
-        console.log(targets);
+        //console.log(targets);
+        for (var i = 0; i < targets.length; i++) {
+            var randomNumber = targets[i];
+            console.log(colors[randomNumber]);
+            for (var j = 0; j < 200000000; j++){
+
+            }
+            console.log(ansi.eraseLines(3));
+        }
         for (var i = 0; i < targets.length && true == playing; i++) {
             var guessNum = i + 1;
             var guess = readlineSync.question('Guess #' + guessNum + ': ');
