@@ -1,4 +1,5 @@
 # simon
+https://commons.wikimedia.org/wiki/Colors#/media/File:Colors-i54-ring.png
 type node simon.js to launch </br>
 type node simonhelp.js to launch the help page </br> </br>
 
