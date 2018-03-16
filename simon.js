@@ -29,6 +29,7 @@ figlet('Simon',{
             } else {
                 console.log(chalk.red.bold('You\'re Wrong!'));
                 console.log(chalk.white.bold('Game Over!'));
+                console.log(chalk.red.bgBlue.bold('try node simonhelp.js'))
                 playing = false;
             }
         }
