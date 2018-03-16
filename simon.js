@@ -26,7 +26,7 @@ figlet('Simon',{
         for (var i = 0; i < targets.length; i++) {
             var randomNumber = targets[i];
             console.log(colors[randomNumber]);
-            for (var j = 0; j < 200000000; j++){
+            for (var j = 0; j < 250000000; j++){
 
             }
             console.log(ansi.eraseLines(3));
