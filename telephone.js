@@ -1,1 +1,0 @@
-const figlet = require('figlet');
