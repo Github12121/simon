@@ -1,5 +1,5 @@
 # simon
-![](https://upload.wikimedia.org/wikipedia/commons/9/90/Colors-i54-ring.png)</br> 
+![](https://upload.wikimedia.org/wikipedia/commons/1/1e/Regnbue_F%C3%A6r%C3%B8erne.jpg)</br> 
 type node simon.js to launch </br>
 type node simonhelp.js to launch the help page </br> </br>
 
