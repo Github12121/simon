@@ -1,4 +1,4 @@
-![](https://upload.wikimedia.org/wikipedia/commons/1/1e/Regnbue_F%C3%A6r%C3%B8erne.jpg)</br> 
+![](https://upload.wikimedia.org/wikipedia/commons/6/68/Lasershow_Halifax_20070610.jpg)</br> 
 # Simon
 type node simon.js to launch </br>
 type node simonhelp.js to launch the help page </br> </br>
