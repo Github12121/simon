@@ -1,5 +1,5 @@
 # simon
-<img src = https://commons.wikimedia.org/wiki/Colors#/media/File:Cubo_RGB_con_las_capas_de_color.png width = 350/></br>
+![](https://commons.wikimedia.org/wiki/Colors#/media/File:Cubo_RGB_con_las_capas_de_color.png) 
 type node simon.js to launch </br>
 type node simonhelp.js to launch the help page </br> </br>
 
