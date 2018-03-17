@@ -1,5 +1,5 @@
 # simon
-<img src = https://en.wikipedia.org/wiki/Color#/media/File:Colouring_pencils.jpg></br>
+<img src = https://en.wikipedia.org/wiki/Color#/media/File:Colouring_pencils.jpg width = 350/></br>
 type node simon.js to launch </br>
 type node simonhelp.js to launch the help page </br> </br>
 
