@@ -1,0 +1,87 @@
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<style>
+    h1 {
+        text-align: center;
+    }
+    .button {
+        width: 200px;
+        height: 200px;
+        display: inline-block;
+        opacity: 0.5;
+        text-align: center;
+        color: white;
+        font-family: sans-serif;
+        text-shadow: 1px 1px black;
+        margin: 3px;
+    }
+    .button:hover {
+        opacity: 0.8;
+    }
+    .button:hover h2 {
+        -webkit-transform: scale(1.2);
+        transition: 0.5s;
+    }
+    .button:active {
+        opacity: 1;
+    }
+    #red {
+        background-color: red;
+    }
+    #blue {
+        background-color: blue;
+    }
+    #green {
+        background-color: green;
+    }
+    #yellow {
+        background-color: yellow;
+    }
+
+    .button h2 {
+        margin-top: 80px;
+    }
+    #app {
+        text-align: center;
+    }
+    #color {
+        font-size: 30px;
+    }
+
+</style>
+<div id="app">
+    <h1>Simon</h1>
+    <div class="button" id="red" v-on:click="selected">
+        <h2>Red</h2>
+    </div>
+
+    <div class="button" id="blue" @click="selected">
+        <h2>Blue</h2>
+    </div>
+    <br/>
+    <div class="button" id="green" @click="selected">
+        <h2>Green</h2>
+    </div>
+
+    <div class="button" id="yellow" @click="selected">
+        <h2>Yellow</h2>
+    </div>
+    <br/>
+    <h1 id="color">
+        {{ color }}
+    </h1>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            color: 'click one!'
+        },
+        methods: {
+            selected: function(event) {
+                if (event) {
+                    this.color = event.target.id;
+                    //alert(event.target.id);
+                }
+            }
+        }
+    })
+</script>
