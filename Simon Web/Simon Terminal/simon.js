@@ -29,7 +29,8 @@ figlet('Simon',{
     do {
         console.log(ansi.clearScreen);
 
-        targets.push(random(3));
+        var randomColorNumber = random(3);
+        targets.push(randomColorNumber);
 
         for (var i = 0; i < targets.length; i++) {
             var randomNumber = targets[i];
