@@ -76,14 +76,15 @@
         el: '#app',
         data: {
             targets: [],
-            color: 'click one!'
+            color: 'click one!',
+            nextcolor: null
         },
         created: function() {
         },
         mounted: function() {
             var randomColorNumber =   Math.floor(Math.random()*4);
             this.targets.push(randomColorNumber);
-            console.log(this.targets)
+            console.log(this.targets);
             for(var i = 0; i < this.targets.length; i++) {
                 var randomNumber = this.targets[i];
             }
@@ -91,12 +92,15 @@
         methods: {
             selected: function(event) {
                 if (event) {
-
+                    this.nextcolor = event.currentTarget.getAttribute('color');
+                    setTimeout(function() {
+                        this.color = this.nextcolor;
+                        console.log(this.color);
+                    }.bind(this), 1000);
                     console.log('event.currentTarget:');
                     console.log(event.currentTarget.getAttribute('color'));
 
-                    this.color = event.currentTarget.getAttribute('color');
-                    console.log(this.color);
+
                 }
             }
         }
