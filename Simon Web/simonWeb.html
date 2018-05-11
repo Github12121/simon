@@ -1,5 +1,6 @@
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.1.5/Tone.min.js"></script>
+<script src="https://unpkg.com/vue-typer/dist/vue-typer.min.js"></script>
 <style>
     h1 {
         text-align: center;
@@ -23,6 +24,9 @@
         transition: 0.5s;
     }
     .button:active {
+        opacity: 1;
+    }
+    .highlight {
         opacity: 1;
     }
     #red {
@@ -50,13 +54,13 @@
 
 </style>
 <div id="app">
-    <h1>Simon</h1>
+    <h1><vue-typer text="Simon"></vue-typer></h1>
     <p>This is an online Simon game! Please click the colors that are highlighted to progress!</p>
-    <div class="button" id="red" color="red" @click="selected">
-        <h2 color="red" @click="selected">Red</h2>
+    <div class="button" :class="{highlight:color =='red'}" id="red" color="red" @click="selected">
+        <h2 color="red"  @click="selected">Red</h2>
     </div>
 
-    <div class="button" id="blue" color="blue" @click="selected">
+    <div class="button" :class="{highlight:color =='blue'}" id="blue" color="blue" @click="selected">
         <h2 color="blue" @click="selected">Blue</h2>
     </div>
     <br/>
@@ -64,7 +68,7 @@
         <h2 color="green" @click="selected">Green</h2>
     </div>
 
-    <div class="button" id="yellow" color="yellow" @click="selected">
+    <div class="button"  id="yellow" color="yellow" @click="selected">
         <h2 color="yellow" @click="selected">Yellow</h2>
     </div>
     <br/>
@@ -73,7 +77,8 @@
     </h1>
 </div>
 <script>
-
+    var VueTyperPlugin = window.VueTyper.default
+    Vue.use(VueTyperPlugin);
     var synth = new Tone.Synth().toMaster();
     var app = new Vue({
         el: '#app',
@@ -97,13 +102,17 @@
         },
         methods: {
             next: function() {
-                var randomColorNumber = Math.floor(Math.random()*4);
-                var colorName = this.colors[randomColorNumber];
+                let randomColorNumber = Math.floor(Math.random()*4);
+                let colorName = this.colors[randomColorNumber];
                 this.targets.push(colorName);
                 console.log(this.targets);
-                for (var i = 0; i < this.targets.length; i++) {
-                    this.color = this.targets[i];
-                    synth.triggerAttackRelease(this.notes[this.color], '8n');
+                for (let i = 0; i < this.targets.length; i++) {
+                    setTimeout(function() {
+                        this.color = this.targets[i];
+                        synth.triggerAttackRelease(this.notes[this.color], '8n');
+                        setTimeout(function () { this.color = false; }.bind(this), 500);
+                        alert('pause');
+                    }.bind(this), 1000);
                 }
 
             },
