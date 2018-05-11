@@ -73,6 +73,7 @@
     </h1>
 </div>
 <script>
+
     var synth = new Tone.Synth().toMaster();
     var app = new Vue({
         el: '#app',
@@ -108,6 +109,9 @@
             },
 
             selected: function(event) {
+                if (Tone.context.state !== 'running') {
+                    Tone.context.resume();
+                }
                 var colorClickedByUser = event.currentTarget.getAttribute('color');
                 synth.triggerAttackRelease(this.notes[colorClickedByUser], '8n');
                 if (colorClickedByUser == this.targets[this.prompt]) {
