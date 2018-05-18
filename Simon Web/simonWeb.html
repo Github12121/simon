@@ -64,11 +64,11 @@
         <h2 color="blue" @click="selected">Blue</h2>
     </div>
     <br/>
-    <div class="button" id="green" color="green" @click="selected">
+    <div class="button" :class="{highlight:color =='green'}" id="green" color="green" @click="selected">
         <h2 color="green" @click="selected">Green</h2>
     </div>
 
-    <div class="button"  id="yellow" color="yellow" @click="selected">
+    <div class="button" :class="{highlight:color =='yellow'}"  id="yellow" color="yellow" @click="selected">
         <h2 color="yellow" @click="selected">Yellow</h2>
     </div>
     <br/>
@@ -80,6 +80,7 @@
     var VueTyperPlugin = window.VueTyper.default
     Vue.use(VueTyperPlugin);
     var synth = new Tone.Synth().toMaster();
+    var playing = true;
     var app = new Vue({
         el: '#app',
         data: {
@@ -90,15 +91,7 @@
             notes: {'red': 'c4', 'blue': 'd4','green': 'e4','yellow': 'f4'}
         },
         mounted: function() {
-            let randomColorNumber = Math.floor(Math.random()*4);
-            let colorName = this.colors[randomColorNumber];
-            this.targets.push(colorName);
-            console.log(this.targets);
-            for (let i = 0; i < this.targets.length; i++) {
-                setTimeout(function() {
-                    this.color = this.targets[i];
-                }.bind(this), 1000 * i);
-            }
+            this.next();
         },
         methods: {
             next: function() {
@@ -111,8 +104,7 @@
                         this.color = this.targets[i];
                         synth.triggerAttackRelease(this.notes[this.color], '8n');
                         setTimeout(function () { this.color = false; }.bind(this), 500);
-                        alert('pause');
-                    }.bind(this), 1000);
+                    }.bind(this), 1000 * i);
                 }
 
             },
@@ -121,7 +113,15 @@
                 if (Tone.context.state !== 'running') {
                     Tone.context.resume();
                 }
+                if (playing == false) {
+                    var result = confirm('Do you want to play again?');
+                    if (result == true){
+                        location.reload();
+                    }
+                    return;
+                }
                 var colorClickedByUser = event.currentTarget.getAttribute('color');
+                console.log(colorClickedByUser);
                 synth.triggerAttackRelease(this.notes[colorClickedByUser], '8n');
                 if (colorClickedByUser == this.targets[this.prompt]) {
                     this.prompt = this.prompt + 1;
@@ -132,6 +132,7 @@
                     }
                 }else {
                     alert('You Lost!');
+                    playing = false;
                 }
             }
         }

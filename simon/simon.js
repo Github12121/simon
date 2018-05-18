@@ -37,6 +37,7 @@ figlet('Simon',{
             console.log(colors[randomNumber]);
             sleep(timeout);
             console.log(ansi.eraseLines(3));
+            console.log(ansi.eraseLines(3));
             sleep(1);
         }
         for (var i = 0; i < targets.length && true == playing; i++) {
