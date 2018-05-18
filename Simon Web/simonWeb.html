@@ -51,6 +51,14 @@
     #color {
         font-size: 30px;
     }
+    .v-enter-active, .v-leave-active {
+        transition: opacity 0.25s ease-out;
+    }
+
+    .v-enter, .v-leave-to {
+        opacity: 0;
+    }
+
 
 </style>
 <div id="app">
@@ -72,15 +80,16 @@
         <h2 color="yellow" @click="selected">Yellow</h2>
     </div>
     <br/>
+    <transition>
     <h1 id="color" v-if="color">
          You need to click on {{ color }}!
     </h1>
+    </transition>
 </div>
 <script>
-    var VueTyperPlugin = window.VueTyper.default
+    var VueTyperPlugin = window.VueTyper.default;
     Vue.use(VueTyperPlugin);
     var synth = new Tone.Synth().toMaster();
-    var playing = true;
     var app = new Vue({
         el: '#app',
         data: {
@@ -99,12 +108,14 @@
                 let colorName = this.colors[randomColorNumber];
                 this.targets.push(colorName);
                 console.log(this.targets);
+                var timeout = 1000 - this.targets.length *3;
                 for (let i = 0; i < this.targets.length; i++) {
                     setTimeout(function() {
                         this.color = this.targets[i];
                         synth.triggerAttackRelease(this.notes[this.color], '8n');
                         setTimeout(function () { this.color = false; }.bind(this), 500);
-                    }.bind(this), 1000 * i);
+
+                    }.bind(this), timeout * i);
                 }
 
             },
@@ -113,26 +124,25 @@
                 if (Tone.context.state !== 'running') {
                     Tone.context.resume();
                 }
-                if (playing == false) {
-                    var result = confirm('Do you want to play again?');
-                    if (result == true){
-                        location.reload();
-                    }
-                    return;
-                }
                 var colorClickedByUser = event.currentTarget.getAttribute('color');
                 console.log(colorClickedByUser);
                 synth.triggerAttackRelease(this.notes[colorClickedByUser], '8n');
                 if (colorClickedByUser == this.targets[this.prompt]) {
                     this.prompt = this.prompt + 1;
                     if (this.prompt >= this.targets.length){
+
                         alert('Good Job!');
                         this.prompt = 0;
                         this.next();
                     }
                 }else {
                     alert('You Lost!');
-                    playing = false;
+                    var result = confirm('Do you want to play again?');
+                    if (result == true){
+                        location.reload();
+                    } else {
+                        location.href = 'http://www.simoncowellonline.com/';
+                    }
                 }
             }
         }
